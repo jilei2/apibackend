@@ -1,0 +1,35 @@
+server:
+  port: 8090
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: http://localhost:8123
+          predicates:
+            - Path=/**
+  redis:
+    database: 0
+    host: 101.43.239.134
+    port: 6379
+    timeout: 5000
+    password: asd45600
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: trace
+dubbo:
+  application:
+    name: nero-api-admin-consumer
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    id: nacos-registry
+    #todo
+    address: nacos://101.43.239.134:8848
+
